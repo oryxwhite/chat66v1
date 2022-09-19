@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+
     <style>
       body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
@@ -20,9 +22,11 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <script src="/socket.io/socket.io.js"></script>
+    
     <script>
-        var socket = io();
+        var socket = io("http://159.223.99.239", { 
+	   withCredentials: true
+	});
 
         var form = document.getElementById('form')
         var input = document.getElementById('input')
@@ -39,8 +43,7 @@
             let item = document.createElement('li')
             item.textContent = msg
             messages.appendChild(item)
-            window.scrollTo(0, document.body.scrollHeight)
-        })
+            window.scrollTo(0, document.body.scrollHeight)        })
     </script>
   </body>
 </html>
